@@ -16,7 +16,7 @@ response.on('end', function(){
 // read the file takes 3 args file, encoding, callback
 fs.readFile("test.txt", 'utf-8', function(error,data){
 	if (request.url === '/') {
-		console.log(request.url);
+		console.log(request);
 
 
 			// write headers
