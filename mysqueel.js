@@ -1,15 +1,8 @@
-var http = require('http');
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'me',
-	password: 'secret',
-});
+var http = require('http'),
+	mysql = require('mysql'),
+	fs = require('fs');
 
-connection.connect();
-connection.query('SELECT 1+1 AS solution', function(error,rows,fields){
-	// if (error) throw error;
-	console.log("the solution is: ", rows[0].solution );
-});
-
-connection.end();
+	fs.readFile('log.txt', function(error,logData){
+		if (error) throw error;
+		var text = logData.toString();
+	});
