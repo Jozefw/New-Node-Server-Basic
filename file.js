@@ -1,7 +1,7 @@
 // include http module
 var http = require('http'),
 
-// add mysql file  fs is for reading and writing files
+// add fs for reading and writing files
 
 fs = require('fs');
 
@@ -13,16 +13,24 @@ http.createServer(function(request,response){
 response.on('end', function(){
 
 });
-// read the file
+// read the file takes 3 args file, encoding, callback
 fs.readFile("test.txt", 'utf-8', function(error,data){
-	// write headers
-	response.writeHead(200,{
-		'Content-Type': 'text/plain',
-	});
-	data = parseInt(data,10) + 1;
-// write incremented number to file
-fs.writeFile('test.txt', data);
-// end response
-response.end("This was refreshed " + data + " times!");
+	if (request.url === '/') {
+
+
+			// write headers
+			response.writeHead(200,{
+				'Content-Type': 'text/plain',
+			});
+			data = parseInt(data,10) + 1;
+		// write incremented number to file...args = file, data, encoding, CB
+		fs.writeFile('test.txt', data);
+		// end response
+		response.end("This was refreshed " + data + " times!");
+	} else {
+		response.writeHead(404);
+		response.end();
+	}
 });
+
 }).listen(8080);
