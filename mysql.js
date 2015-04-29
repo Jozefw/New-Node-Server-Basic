@@ -1,8 +1,8 @@
 // include http module
-http = require('http');
+var http = require('http');
 
 // add mysql module
-mysql = require('mysql');
+var mysql = require('mysql');
 
 // create connection
 // data is default to new mysql install and should be changed according to the configuration
