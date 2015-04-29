@@ -9,6 +9,7 @@ var http = require('http'),
 			lines = text.split('\n');
 			console.log("this is lines " + lines);
 
+// this is like ruby's for each
 			lines.forEach(function(line){
 				var parts = line.split(' ');
 				console.log("this is parts " + parts);
