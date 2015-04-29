@@ -6,13 +6,22 @@ var http = require('http'),
 		if (error) throw error;
 		var text = logData.toString(),
 			results = {},
-			lines =text.split('\n');
+			lines = text.split('\n');
+			console.log("this is lines " + lines);
 
 			lines.forEach(function(line){
-				var parts = line.split(' '),
-					letter = parts[1],
-					count = parseInt(parts[2]);
+				var parts = line.split(' ');
+				console.log("this is parts " + parts);
+				var letter = parts[1];
+				console.log("this is letter " + letter);
+				var count = parseInt(parts[2], 10);
 
-			})
+				if ( !results[letter] ) {
+					results[letter] = 0;
+				}
+				results[letter] = results[letter] + parseInt(count,10);
+
+			});
+			console.log(results);
 
 	});
